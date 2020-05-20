@@ -106,6 +106,7 @@ from .user_paged import UserPaged
 from .domain_paged import DomainPaged
 from .oauth2_permission_grant_paged import OAuth2PermissionGrantPaged
 from .graph_rbac_management_client_enums import (
+    GroupMembershipClaimTypes,
     UserType,
     ConsentType,
 )
@@ -163,6 +164,7 @@ __all__ = [
     'UserPaged',
     'DomainPaged',
     'OAuth2PermissionGrantPaged',
+    'GroupMembershipClaimTypes',
     'UserType',
     'ConsentType',
 ]

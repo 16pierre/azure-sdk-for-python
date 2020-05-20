@@ -56,8 +56,10 @@ class Application(DirectoryObject):
      report errors when using the application.
     :type error_url: str
     :param group_membership_claims: Configures the groups claim issued in a
-     user or OAuth 2.0 access token that the app expects.
-    :type group_membership_claims: object
+     user or OAuth 2.0 access token that the app expects. Possible values
+     include: 'None', 'SecurityGroup', 'All'
+    :type group_membership_claims: str or
+     ~azure.graphrbac.models.GroupMembershipClaimTypes
     :param homepage: The home page of the application.
     :type homepage: str
     :param identifier_uris: A collection of URIs for the application.
@@ -151,7 +153,7 @@ class Application(DirectoryObject):
         'available_to_other_tenants': {'key': 'availableToOtherTenants', 'type': 'bool'},
         'display_name': {'key': 'displayName', 'type': 'str'},
         'error_url': {'key': 'errorUrl', 'type': 'str'},
-        'group_membership_claims': {'key': 'groupMembershipClaims', 'type': 'object'},
+        'group_membership_claims': {'key': 'groupMembershipClaims', 'type': 'str'},
         'homepage': {'key': 'homepage', 'type': 'str'},
         'identifier_uris': {'key': 'identifierUris', 'type': '[str]'},
         'informational_urls': {'key': 'informationalUrls', 'type': 'InformationalUrl'},

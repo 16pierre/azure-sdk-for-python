@@ -12,6 +12,13 @@
 from enum import Enum
 
 
+class GroupMembershipClaimTypes(str, Enum):
+
+    none = "None"
+    security_group = "SecurityGroup"
+    all = "All"
+
+
 class UserType(str, Enum):
 
     member = "Member"

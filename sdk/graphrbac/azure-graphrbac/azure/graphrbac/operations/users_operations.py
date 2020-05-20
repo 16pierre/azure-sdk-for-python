@@ -98,11 +98,13 @@ class UsersOperations(object):
     create.metadata = {'url': '/{tenantID}/users'}
 
     def list(
-            self, filter=None, custom_headers=None, raw=False, **operation_config):
+            self, filter=None, expand=None, custom_headers=None, raw=False, **operation_config):
         """Gets list of users for the current tenant.
 
         :param filter: The filter to apply to the operation.
         :type filter: str
+        :param expand: The expand value for the operation result.
+        :type expand: str
         :param dict custom_headers: headers that will be added to the request
         :param bool raw: returns the direct response alongside the
          deserialized response
@@ -128,6 +130,8 @@ class UsersOperations(object):
                 query_parameters = {}
                 if filter is not None:
                     query_parameters['$filter'] = self._serialize.query("filter", filter, 'str')
+                if expand is not None:
+                    query_parameters['$expand'] = self._serialize.query("expand", expand, 'str')
                 query_parameters['api-version'] = self._serialize.query("self.api_version", self.api_version, 'str')
 
             else:
