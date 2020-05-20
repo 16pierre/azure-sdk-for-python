@@ -335,6 +335,138 @@ class ServicePrincipalsOperations(object):
         return deserialized
     get.metadata = {'url': '/{tenantID}/servicePrincipals/{objectId}'}
 
+    def list_app_role_assignments(
+            self, object_id, custom_headers=None, raw=False, **operation_config):
+        """
+
+        :param object_id: The object ID of the service principal
+        :type object_id: str
+        :param dict custom_headers: headers that will be added to the request
+        :param bool raw: returns the direct response alongside the
+         deserialized response
+        :param operation_config: :ref:`Operation configuration
+         overrides<msrest:optionsforoperations>`.
+        :return: An iterator like instance of AppRoleAssignment
+        :rtype:
+         ~azure.graphrbac.models.AppRoleAssignmentPaged[~azure.graphrbac.models.AppRoleAssignment]
+        :raises:
+         :class:`GraphErrorException<azure.graphrbac.models.GraphErrorException>`
+        """
+        def internal_paging(next_link=None, raw=False):
+
+            if not next_link:
+                # Construct URL
+                url = self.list_app_role_assignments.metadata['url']
+                path_format_arguments = {
+                    'objectId': self._serialize.url("object_id", object_id, 'str'),
+                    'tenantID': self._serialize.url("self.config.tenant_id", self.config.tenant_id, 'str')
+                }
+                url = self._client.format_url(url, **path_format_arguments)
+
+                # Construct parameters
+                query_parameters = {}
+                query_parameters['api-version'] = self._serialize.query("self.api_version", self.api_version, 'str')
+
+            else:
+                url = next_link
+                query_parameters = {}
+
+            # Construct headers
+            header_parameters = {}
+            header_parameters['Accept'] = 'application/json'
+            if self.config.generate_client_request_id:
+                header_parameters['x-ms-client-request-id'] = str(uuid.uuid1())
+            if custom_headers:
+                header_parameters.update(custom_headers)
+            if self.config.accept_language is not None:
+                header_parameters['accept-language'] = self._serialize.header("self.config.accept_language", self.config.accept_language, 'str')
+
+            # Construct and send request
+            request = self._client.get(url, query_parameters, header_parameters)
+            response = self._client.send(request, stream=False, **operation_config)
+
+            if response.status_code not in [200]:
+                raise models.GraphErrorException(self._deserialize, response)
+
+            return response
+
+        # Deserialize response
+        deserialized = models.AppRoleAssignmentPaged(internal_paging, self._deserialize.dependencies)
+
+        if raw:
+            header_dict = {}
+            client_raw_response = models.AppRoleAssignmentPaged(internal_paging, self._deserialize.dependencies, header_dict)
+            return client_raw_response
+
+        return deserialized
+    list_app_role_assignments.metadata = {'url': '/{tenantID}/servicePrincipals/{objectId}/appRoleAssignments'}
+
+    def list_app_role_assigned_to(
+            self, object_id, custom_headers=None, raw=False, **operation_config):
+        """
+
+        :param object_id: The object ID of the service principal
+        :type object_id: str
+        :param dict custom_headers: headers that will be added to the request
+        :param bool raw: returns the direct response alongside the
+         deserialized response
+        :param operation_config: :ref:`Operation configuration
+         overrides<msrest:optionsforoperations>`.
+        :return: An iterator like instance of AppRoleAssignment
+        :rtype:
+         ~azure.graphrbac.models.AppRoleAssignmentPaged[~azure.graphrbac.models.AppRoleAssignment]
+        :raises:
+         :class:`GraphErrorException<azure.graphrbac.models.GraphErrorException>`
+        """
+        def internal_paging(next_link=None, raw=False):
+
+            if not next_link:
+                # Construct URL
+                url = self.list_app_role_assigned_to.metadata['url']
+                path_format_arguments = {
+                    'objectId': self._serialize.url("object_id", object_id, 'str'),
+                    'tenantID': self._serialize.url("self.config.tenant_id", self.config.tenant_id, 'str')
+                }
+                url = self._client.format_url(url, **path_format_arguments)
+
+                # Construct parameters
+                query_parameters = {}
+                query_parameters['api-version'] = self._serialize.query("self.api_version", self.api_version, 'str')
+
+            else:
+                url = next_link
+                query_parameters = {}
+
+            # Construct headers
+            header_parameters = {}
+            header_parameters['Accept'] = 'application/json'
+            if self.config.generate_client_request_id:
+                header_parameters['x-ms-client-request-id'] = str(uuid.uuid1())
+            if custom_headers:
+                header_parameters.update(custom_headers)
+            if self.config.accept_language is not None:
+                header_parameters['accept-language'] = self._serialize.header("self.config.accept_language", self.config.accept_language, 'str')
+
+            # Construct and send request
+            request = self._client.get(url, query_parameters, header_parameters)
+            response = self._client.send(request, stream=False, **operation_config)
+
+            if response.status_code not in [200]:
+                raise models.GraphErrorException(self._deserialize, response)
+
+            return response
+
+        # Deserialize response
+        deserialized = models.AppRoleAssignmentPaged(internal_paging, self._deserialize.dependencies)
+
+        if raw:
+            header_dict = {}
+            client_raw_response = models.AppRoleAssignmentPaged(internal_paging, self._deserialize.dependencies, header_dict)
+            return client_raw_response
+
+        return deserialized
+    list_app_role_assigned_to.metadata = {'url': '/{tenantID}/servicePrincipals/{objectId}/appRoleAssignedTo'}
+
     def list_owners(
             self, object_id, custom_headers=None, raw=False, **operation_config):
         """Directory objects that are owners of this service principal.

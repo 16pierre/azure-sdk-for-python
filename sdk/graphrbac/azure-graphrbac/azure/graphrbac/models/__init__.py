@@ -19,6 +19,7 @@ try:
     from .pre_authorized_application_py3 import PreAuthorizedApplication
     from .graph_error_py3 import GraphError, GraphErrorException
     from .directory_object_py3 import DirectoryObject
+    from .app_role_assignment_py3 import AppRoleAssignment
     from .key_credential_py3 import KeyCredential
     from .password_credential_py3 import PasswordCredential
     from .resource_access_py3 import ResourceAccess
@@ -62,6 +63,7 @@ except (SyntaxError, ImportError):
     from .pre_authorized_application import PreAuthorizedApplication
     from .graph_error import GraphError, GraphErrorException
     from .directory_object import DirectoryObject
+    from .app_role_assignment import AppRoleAssignment
     from .key_credential import KeyCredential
     from .password_credential import PasswordCredential
     from .resource_access import ResourceAccess
@@ -102,6 +104,7 @@ from .password_credential_paged import PasswordCredentialPaged
 from .ad_group_paged import ADGroupPaged
 from .str_paged import StrPaged
 from .service_principal_paged import ServicePrincipalPaged
+from .app_role_assignment_paged import AppRoleAssignmentPaged
 from .user_paged import UserPaged
 from .domain_paged import DomainPaged
 from .oauth2_permission_grant_paged import OAuth2PermissionGrantPaged
@@ -121,6 +124,7 @@ __all__ = [
     'PreAuthorizedApplication',
     'GraphError', 'GraphErrorException',
     'DirectoryObject',
+    'AppRoleAssignment',
     'KeyCredential',
     'PasswordCredential',
     'ResourceAccess',
@@ -161,6 +165,7 @@ __all__ = [
     'ADGroupPaged',
     'StrPaged',
     'ServicePrincipalPaged',
+    'AppRoleAssignmentPaged',
     'UserPaged',
     'DomainPaged',
     'OAuth2PermissionGrantPaged',
